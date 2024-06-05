@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+	<style>
+		body {
+			background-color: #344a72;
+			font-family: "Roboto", sans-serif;
+		}
+
+		.signup-box {
+			width: 360px;
+			height: 620px;
+			margin: auto;
+			background-color:
+				white;
+			border-radius: 3px;
+		}
+
+		.login-box {
+			width: 360px;
+			height: 280px;
+			margin: auto;
+			border-radius: 3px;
+			background-color: white;
+		}
+
+		h1 {
+			text-align: center;
+			padding-top: 15px;
+		}
+
+		h4 {
+			text-align: center;
+		}
+
+		form {
+			width: 300px;
+			margin-left: 20px;
+		}
+
+		form label {
+			display: flex;
+			margin-top:
+				20px;
+			font-size: 18px;
+		}
+
+		form input {
+			width: 100%;
+			padding: 7px;
+			border:
+				none;
+			border: 1px solid gray;
+			border-radius: 6px;
+			outline: none;
+		}
+
+		input[type="button"] {
+			width: 320px;
+			height: 35px;
+			margin-top: 20px;
+			border: none;
+			background-color: #49c1a2;
+			color: white;
+			font-size: 18px;
+		}
+
+		p {
+			text-align: center;
+			padding-top: 20px;
+			font-size: 15px;
+		}
+
+		.para-2 {
+			text-align: center;
+			color: rgb(14, 2, 2);
+			font-size: 15px;
+			margin-top: -10px;
+		}
+
+		.para-2 a {
+			color: #49c1a2;
+		}
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			$("#form1").submit(function (event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/',
+					data: $('#form1').serialize(),
+					dataType: "json",
+					success: function (response) {
+						//alert("a");
+						//console.log(response.Success);
+						$('#form1')[0].reset();
+
+						document.getElementById("check").innerHTML = response.Success;
+						//ADD THIS CODE
+						setTimeout(function () {
+							document.getElementById("check").innerHTML = "";
+						}, 3000);
+						if (response.Success == "You are regestered,You can login now.") {
+							document.getElementById("aa").click();
+						};
+					},
+					error: function () {
+					}
+				})
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div class="signup-box">
+		<h1>Sign Up</h1>
+		<h4>It's free and only takes a minute</h4>
+		<div class="form-group">
+			<form id="form1" method="post">
+				<input type="email" name="email" placeholder="E-mail" required="" class="form-control"><br />
+				<input type="text" name="username" placeholder="Username" required="" class="form-control"><br />
+				<input type="password" name="password" placeholder="Password" required="" class="form-control"><br />
+				<input type="password" name="passwordConf" placeholder="Confirm Password" required=""
+					class="form-control"><br />
+				<input type="submit" value="Submit" />
+
+			</form>
+			<p>
+				By clicking the Sign Up button,you agree to our
+				<br />
+				<a href="/t&c">Terms and Condition</a>
+				and
+				<a href="/t&c">Policy Privacy</a>
+			</p>
+
+			<div class="mssg bg-danger">
+				<span id="check"></span>
+			</div>
+			<div class="para-2"><br><br>
+				<span>Already Registered! <a href="/login">Login</a></span>
+			</div>
+			<div id="LangTable"><a href="/login" id="aa"></a>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

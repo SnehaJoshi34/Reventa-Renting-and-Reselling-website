@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        * {
+     box-sizing: border-box;
+   }
+   
+   body {
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+   }
+   
+   .container {
+     max-width: 600px;
+     margin: 0 auto;
+     padding: 20px;
+   }
+   
+   h1,
+   h2 {
+     text-align: center;
+     font-weight: bold;
+   }
+   
+   .form-group {
+     margin-bottom: 10px;
+   }
+   
+   label {
+     display: block;
+     margin-bottom: 5px;
+   }
+   
+   input[type="text"],
+   input[type="email"],
+   input[type="tel"],
+   input[type="number"],
+   textarea {
+     width: 100%;
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     font-size: 16px;
+   }
+   
+   input[type="file"] {
+     width: 100%;
+     padding: 5px 10px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     font-size: 16px;
+   }
+   
+   button[type="submit"] {
+     background-color: #4caf50;
+     color: #fff;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     font-size: 16px;
+   }
+   
+   button[type="submit"]:hover {
+     background-color: #3e8e41;
+   }
+   </style>
+    <title>Application Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Application</h1>
+      <form>
+        <div class="form-group">
+          <label for="seller-name">Name of the Seller:</label>
+          <input type="text" id="seller-name" name="seller-name" />
+        </div>
+        <div class="form-group">
+          <label for="seller-email">Email:</label>
+          <input type="email" id="seller-email" name="seller-email" />
+        </div>
+        <div class="form-group">
+          <label for="seller-contact">Contact:</label>
+          <input type="tel" id="seller-contact" name="seller-contact" />
+        </div>
+        <div class="form-group">
+          <label for="aadhaar-card">Aadhaar Card PDF:</label>
+          <input
+            type="file"
+            id="aadhaar-card"
+            name="aadhaar-card"
+            accept="application/pdf"
+          />
+        </div>
+        <hr />
+        <h2>Product Details</h2>
+        <div class="form-group">
+          <label for="product-price">Price:</label>
+          <input type="number" id="product-price" name="product-price" />
+        </div>
+        <div class="form-group">
+          <label for="original-price">Original Price:</label>
+          <input type="number" id="original-price" name="original-price" />
+        </div>
+        <div class="form-group">
+          <label for="usage-time">Usage Time Period:</label>
+          <input type="text" id="usage-time" name="usage-time" />
+        </div>
+        <div class="form-group">
+          <label for="product-authentication"
+            >Product Authentication or Issue Certificate if any:</label
+          >
+          <textarea
+            id="product-authentication"
+            name="product-authentication"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="product-photos">Product Photos:</label>
+          <input
+            type="file"
+            id="product-photos"
+            name="product-photos"
+            accept="image/*"
+            multiple
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

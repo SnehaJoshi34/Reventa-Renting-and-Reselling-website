@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+
+	<!-- JAVASCRIPT -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			$("#form").submit(function (event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/login',
+					data: $('#form').serialize(),
+					dataType: "json",
+					success: function (response) {
+						//alert("a");
+						//console.log(response.Success);
+						$('#form')[0].reset();
+
+						document.getElementById("check").innerHTML = response.Success;
+						//ADD THIS CODE
+						setTimeout(function () {
+							document.getElementById("check").innerHTML = "";
+						}, 3000);
+						if (response.Success == "Success!") {
+							document.getElementById("aa").click();
+						};
+					},
+					error: function () {
+					}
+				})
+			});
+		});
+	</script>
+	<style>
+		body {
+			background-color: #344a72;
+			font-family: "Roboto", sans-serif;
+		}
+
+		.signup-box {
+			width: 360px;
+			height: 620px;
+			margin: auto;
+			background-color:
+				white;
+			border-radius: 3px;
+		}
+
+		.login-box {
+			width: 360px;
+			height: 280px;
+			margin: auto;
+			border-radius: 3px;
+			background-color: white;
+		}
+
+		h1 {
+			text-align: center;
+			padding-top: 15px;
+		}
+
+		h4 {
+			text-align: center;
+		}
+
+		form {
+			width: 300px;
+			margin-left: 20px;
+		}
+
+		form label {
+			display: flex;
+			margin-top:
+				20px;
+			font-size: 18px;
+		}
+
+		form input {
+			width: 100%;
+			padding: 7px;
+			border:
+				none;
+			border: 1px solid gray;
+			border-radius: 6px;
+			outline: none;
+		}
+
+		input[type="button"] {
+			width: 320px;
+			height: 35px;
+			margin-top: 20px;
+			border: none;
+			background-color: #49c1a2;
+			color: white;
+			font-size: 18px;
+		}
+
+		p {
+			text-align: center;
+			padding-top: 20px;
+			font-size: 15px;
+		}
+
+		.para-2 {
+			text-align: center;
+			color: rgb(17, 17, 17);
+			font-size: 15px;
+			margin-top: -10px;
+		}
+
+		.para-2 a {
+			color: #49c1a2;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="login-box">
+		<div>
+			<!-- <p>Login</p> -->
+			<h1>Login</h1>
+		</div>
+		<div class="form-group">
+			<form id="form" method="post">
+				<input type="text" name="email" placeholder="E-mail" required="" class="form-control"><br />
+				<input type="password" name="password" placeholder="Password" required="" class="form-control"><br />
+				<input type="submit" value="Login" class="btn btn-success">
+			</form>
+		</div>
+		<div class="mssg bg-danger">
+			<span id="check"></span>
+		</div>
+		<div id="LangTable"><a href="/" id="aa"></a>
+		</div>
+		<p class="para-2">
+			Not have an account?
+			<a href="/signup">Sign Up Here</a>
+		<div><span>Do you forgot password?</span><a href="/forgetpass">Click here</a>
+			</p>
+
+		</div>
+
+	</div>
+</body>
+
+</html>
